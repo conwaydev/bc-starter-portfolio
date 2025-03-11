@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@contentful/rich-text-html-renderer": "^17.0.0",
     "contentful": "^11.5.6",
     "next": "15.2.2",
     "react": "^19.0.0",
@@ -16,6 +17,8 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "eslint": "9.22.0",
+    "eslint-config-next": "15.2.2",
     "tailwindcss": "^4"
   }
 }

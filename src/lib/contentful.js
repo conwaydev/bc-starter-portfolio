@@ -1,16 +1,23 @@
-const contentful = require('contentful');
+import {createClient} from 'contentful';
 
-const client = contentful.createClient({
+const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
 });
 
-async function getProjects() {
-  const entries = await client.getEntries({
-    content_type: 'project', // This MUST match your Content Model ID
-    order: '-sys.createdAt' //optional
+export async function getProjects() {
+  const projects = await client.getEntries({
+    content_type: 'projects',
   });
-  return entries.items;
+
+  return projects.items;
 }
 
-module.exports = { getProjects };
+export async function getProject(id = '') {
+  const project = await client.getEntries({
+    content_type: 'projects',
+    'sys.id': id,
+  });
+
+  return project.items;
+}
